@@ -1,9 +1,18 @@
 # Debugging
 
-We hope this manuscript contains all the basic things you need to know to get started writing a book using Leanpub-Flavored Markdown.
+**Accessing console logs**
+You can display the console logs for an iOS or Android app by using the following commands in a terminal while the app is running:
 
-If you switch to writing in the Markua syntax instead of Leanpub-Flavored Markdown, please be sure to rename the `images` folder in your `manuscript` folder to `resources.`
+$ react-native log-ios
+$ react-native log-android
 
-If there is anything simple that you think we should add, please email us at <hello@leanpub.com>.
 
-We recommend you take a few minutes to explore all the options in the Book Tools menu for your book on Leanpub. We've built a lot of powerful features that can help you write and sell your book!
+There are 3 methods that I use to debug when developing React Native apps:
+
+console.log(): shows in console
+console.warn(): shows in yellow box bottom of application
+alert(): shows as a prompt just like it does in web
+
+console.log("Your strings or varible here",name);
+console.warn("Your strings or varible here",name);
+alert("Your strings or varible here",name);
