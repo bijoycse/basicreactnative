@@ -1,3 +1,141 @@
 # Navigation
 
-Hello, world!
+**Navigating Between Screens**
+Mobile apps are rarely made up of a single screen. Managing the presentation of, and transition between, multiple screens is typically handled by what is known as a navigator.
+
+React Navigation provides an easy to use navigation solution, with the ability to present common stack navigation and tabbed navigation patterns on both iOS and Android.
+
+**React Navigation**
+The community solution to navigation is a standalone library that allows developers to set up the screens of an app with just a few lines of code.
+
+The first step is to install in your project:
+
+npm install --save react-navigation
+The second step is to install react-native-gesture-handler
+
+yarn add react-native-gesture-handler
+# or with npm
+# npm install --save react-native-gesture-handler
+Now we need to link our react-native to react-native-gesture-handler
+
+react-native link react-native-gesture-handler
+Then you can quickly create an app with a home screen and a profile screen:
+
+import {createStackNavigator, createAppContainer} from 'react-navigation';
+
+const MainNavigator = createStackNavigator({
+  Home: {screen: HomeScreen},
+  Profile: {screen: ProfileScreen},
+});
+
+const App = createAppContainer(MainNavigator);
+
+export default App;
+Each screen component can set navigation options such as the header title. It can use action creators on the navigation prop to link to other screens:
+
+class HomeScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Welcome',
+  };
+  render() {
+    const {navigate} = this.props.navigation;
+    return (
+      <Button
+        title="Go to Jane's profile"
+        onPress={() => navigate('Profile', {name: 'Jane'})}
+      />
+    );
+  }
+}
+
+**Tab navigation**
+Possibly the most common style of navigation in mobile apps is tab-based navigation. This can be tabs on the bottom of the screen or on the top below the header (or even instead of a header).
+
+This guide covers createBottomTabNavigator. You may also use createMaterialBottomTabNavigator and createMaterialTopTabNavigator to add tabs to your application.
+
+Minimal example of tab-based navigation
+import React from 'react';
+import { Text, View } from 'react-native';
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+
+class HomeScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Home!</Text>
+      </View>
+    );
+  }
+}
+
+class SettingsScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Settings!</Text>
+      </View>
+    );
+  }
+}
+
+const TabNavigator = createBottomTabNavigator({
+  Home: HomeScreen,
+  Settings: SettingsScreen,
+});
+
+export default createAppContainer(TabNavigator);
+
+**Drawer navigation**
+The drawer navigator allows you to present a navigation menu to your users. It can be customized out of the box, or you can completely control with a custom component.
+
+This guide covers createDrawerNavigator.
+
+class HomeScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <TouchableOpacity onPress={this.props.navigation.openDrawer}>
+          <Text>Open Drawer</Text>
+        </TouchableOpacity>
+        <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Home</Text>
+      </View>
+    );
+  }
+}
+
+class SettingsScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <TouchableOpacity onPress={this.props.navigation.openDrawer}>
+          <Text>Open Drawer</Text>
+        </TouchableOpacity>
+        <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Settings</Text>
+      </View>
+    );
+  }
+}
+
+const DrawerNavigator = createDrawerNavigator(
+  {
+    Home: HomeScreen,
+    Settings: SettingsScreen,
+  },
+  {
+    hideStatusBar: true,
+    drawerBackgroundColor: 'rgba(255,255,255,.9)',
+    overlayColor: '#6b52ae',
+    contentOptions: {
+      activeTintColor: '#fff',
+      activeBackgroundColor: '#6b52ae',
+    },
+  }
+);
+
+export default createAppContainer(DrawerNavigator);
+→ Run this code
+
+To open and close drawer, use the following helpers to open and close the drawer:
+
+this.props.navigation.openDrawer();
+this.props.navigation.closeDrawer();
