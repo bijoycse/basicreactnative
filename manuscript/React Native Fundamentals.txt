@@ -1,5 +1,40 @@
-# React Native Fundamental 
-**React Native (RN) Java script library combine the best parts of Native development using React JS. React JS also Javascript library for building user interface as well as native development.**
+# React Native Fundamental  
+
+React Native (RN) Java script library combine the best parts of Native development using React JS. React JS also Javascript library for building user interface as well as native development.
+
+**1.1 Setting Development Environment**
+
+Install NodeJS and NPM
+
+**Linux/Ubuntu**
+sudo apt-get install -y nodejs
+sudo npm install npm --global
+
+Confirm installation of NodeJs and NPM
+
+node -v
+# v8.0.0
+npm -v
+# 6.0.0
+
+Download and install JDK (v7 or newer)
+https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
+
+Download and install Android Studio
+https://developer.android.com/studio
+
+Create an environment variable with the Java SDK path: Windows → Search → System → Advanced System Settings → Environment variables → New
+JAVA_HOME: C:\path\to\JavaSDK
+
+**Install React Native command-line tools
+npm install -g react-native-cli
+
+**How to Install Visual Studio Code on Ubuntu**
+Visual Studio Code is an open source cross-platform code editor developed by Microsoft. 
+sudo apt update
+sudo apt install code
+
+
 
 
 
