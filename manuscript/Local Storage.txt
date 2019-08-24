@@ -1,10 +1,58 @@
 # Local Storage
 
-To start a new paragraph, hit the return key twice. You want to create a blank line between paragraphs.
+**AsyncStorage**
+AsyncStorage is a simple, unencrypted, asynchronous, persistent, key-value storage system that is global to the app. It should be used instead of LocalStorage.
 
-To *italicize*, surround a word in asterisks.
+Importing the AsyncStorage library:
 
-To **bold**, use two asterisks.
+import {AsyncStorage} from 'react-native';
+
+**Persisting data**
+
+_storeData = async () => {
+  try {
+    await AsyncStorage.setItem('@MySuperStore:key', 'I like to save it.');
+  } catch (error) {
+    // Error saving data
+  }
+};
+
+**Fetching data**
+
+_retrieveData = async () => {
+  try {
+    const value = await AsyncStorage.getItem('TASKS');
+    if (value !== null) {
+      // We have data!!
+      console.log(value);
+    }
+  } catch (error) {
+    // Error retrieving data
+  }
+};
+
+**Methods: getItem**
+You can try either add a then after your getItem.
+
+AsyncStorage.getItem("phoneNumber").then((value) => {
+    this.setState({"phoneNumber": value});
+})
+.then(res => {
+    //do something else
+});
+Or use await to wait the async operation to finish
+
+var value = await AsyncStorage.getItem(STORAGE_KEY);
+//use value to do something else.
+
+**Methods: setItem**
+let name = "Michal";  
+AsyncStorage.setItem('user',name);  
+
+**Methods: clear** 
+clearAsyncStorage = async() => {
+    AsyncStorage.clear();
+}
 
 Here is an image with a caption:
 
