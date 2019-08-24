@@ -1,3 +1,39 @@
 # Create New Application
+After completing fundamental topic and setup the environment of React Native now lets start new application on React Native.
 
-Hello, world!
+**Create new application on React Native**
+npm react-native init application_name
+so
+npm react-native init hello
+
+after executing mentioned instruction it will time few times and install it's necessary packages as well as dependencies.
+
+**NPM(Node Packege Manager)**
+Node Package Manager(NPM) Maintain entire packages within React Native applications.
+
+**Lets Discussed Each Folder Hieracy of Created Project**
+hello : React Native root project directory.
+__tests__ : Write test for application.
+android : Here stored all necessary files for Native code Android.
+ios : Here stored all necessary files for Native code iOS.
+node_modules : After installing any packages within React Native projects all files and dependencies within this node_modules.
+App.js : React Naitve dummy projects created here, if execute run command then this file will be build.
+index.js : Routing all things within index.js
+package.json : Project releted information such as project name, version etc with releted dependencies, dev dependencies, jest.
+
+**Run React Native projects**
+npm react native run-android //Android
+npm react native run-ios //iOS
+
+**1. Enable Debugging over USB**
+To enable USB debugging on your device, you will first need to enable the "Developer options" menu by going to Settings → About phone and then tapping the Build number row at the bottom seven times. You can then go back to Settings → Developer options to enable "USB debugging".
+
+**2. Plug in your device via USB**
+Let's now set up an Android device to run our React Native projects. Go ahead and plug in your device via USB to your development machine.
+
+**3. Run your app**
+Type the following in your command prompt to install and launch your app on the device:
+
+$ react-native run-android
+
+Visit : https://facebook.github.io/react-native/docs/running-on-device
