@@ -1,11 +1,90 @@
 # Test by JEST
 
-To start a new paragraph, hit the return key twice. You want to create a blank line between paragraphs.
+Jest is a delightful JavaScript Testing Framework with a focus on simplicity. In our latest version of React Native all dependencies are by default install under devDependencies. So it’s really very simple to start write tested code within your apps.
+{
+“name”: “fcm”,
+“version”: “0.0.1”,
+“private”: true,
+“scripts”: {
+“start”: “node node_modules/react-native/local-cli/cli.js start”,
+“test”: “jest”
+},
+“dependencies”: {
+“react”: “16.6.3”,
+“react-native”: “0.57.8”
+},
+“devDependencies”: {
+“babel-jest”: “24.1.0”,
+“jest”: “24.1.0”,
+“metro-react-native-babel-preset”: “0.51.1”,
+“react-test-renderer”: “16.6.3”
+},
+“jest”: {
+“preset”: “react-native”
+}
+}
 
-To *italicize*, surround a word in asterisks.
+If all dependencies is not available in your project then please install manually through 
+npm i library_name--save-dev command. --save -dev mean it's actually devDependdencies.
 
-To **bold**, use two asterisks.
+Pic 01 : Practice example, test is passed with __tests__ folder structure & npm test commad
+for snapShot testing make a folder Profile-test.js
 
+import ‘react-native’;
+import React from ‘react’;
+import App from ‘../src/App/Views/Profile’;
+// Note: test renderer must be required after react-native.
+import renderer from ‘react-test-renderer’;
+it(‘Profile snapShot’, () => {
+const snap = renderer.create(<App />).toJSON();
+expect(snap).toMatchSnapshot();
+});
+
+use same command npm test observe the result with folder __snapshots__
+
+**Others useful testing by Jest**
+
+* Purpose : TEST CASE FOR UTILITY FUNCTION USING JEST
+*/
+import { customDate, customSubstring, customDateToTime, formBody } from ‘../src/App/Config/configs’;
+
+**Sample Test Case : 01 SAMPLE**
+test('adds 1 + 2 to equal 3', () => {
+expect(3).toBe(3);
+});
+
+**Function : 01 DATE**
+test('Timestamp to Date Convert: 2019–03–15T04:51:00+00:00 to 15 March 2019', () => {
+expect(customDate("2019–03–15T04:51:00+00:00")).toBe("15 March 2019");
+});
+
+**Function : 02 TIME**
+test('Timestamp to Time Convert: 2019–03–15T04:51:00+00:00 to 4:51 pm', () => {
+expect(customDateToTime("2019–03–15T04:51:00+00:00”)).toBe(“10:51 am");
+});
+
+**Function : 03 Substring** 
+test('String to Substring: Bijoy Mohanta to Mohanta', () => {
+expect(customSubstring("Bijoy Mohanta", 7)).toBe("Mohanta");
+});
+
+**Function : 04 MAKE FROM BODY TYPE FOR API CALL** 
+test('Object to FormBody Type:', () => {
+expect(formBody({
+'phone_number': "01717xxxxxx",
+'password': "12345",
+})).toBe("phone_number=01717xxxxxx&password=12345");
+});
+
+> jest
+PASS __tests__/UtilityFunc-test.js
+PASS __tests__/Demo-test.js
+PASS __tests__/Profile-test.js
+Test Suites: 3 passed, 3 total
+Tests: 7 passed, 7 total
+Snapshots: 2 passed, 2 total
+Time: 1.876s, estimated 2s
+It’s only start through Jest for more about testing please visit official site of Jest .
 Here is an image with a caption:
 
 ![Marmalade and Tangerine](images/marm-and-tangie.jpg)
