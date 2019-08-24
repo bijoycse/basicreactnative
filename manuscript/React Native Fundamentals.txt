@@ -26,7 +26,7 @@ https://developer.android.com/studio
 Create an environment variable with the Java SDK path: Windows → Search → System → Advanced System Settings → Environment variables → New
 JAVA_HOME: C:\path\to\JavaSDK
 
-**Install React Native command-line tools
+**Install React Native command-line tools**
 npm install -g react-native-cli
 
 **How to Install Visual Studio Code on Ubuntu**
