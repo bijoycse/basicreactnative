@@ -1,9 +1,17 @@
 # Multiple Projects
 
-We hope this manuscript contains all the basic things you need to know to get started writing a book using Leanpub-Flavored Markdown.
+**Example Projects**
+There are many example projects created by the React community. Feel free to add your own project. If you add a project, please commit to keeping it up to date with the latest versions of React.
 
-If you switch to writing in the Markua syntax instead of Leanpub-Flavored Markdown, please be sure to rename the `images` folder in your `manuscript` folder to `resources.`
-
-If there is anything simple that you think we should add, please email us at <hello@leanpub.com>.
-
-We recommend you take a few minutes to explore all the options in the Book Tools menu for your book on Leanpub. We've built a lot of powerful features that can help you write and sell your book!
+**Calculator:** Implementation of the iOS calculator built in React
+**Emoji Search:** Simple React app for searching emoji
+**Github Battle App:** Battle two Github users and see the most popular Github projects for any language.
+**React Powered Hacker News Client:** A React & react-router-powered implementation of Hacker News using its Firebase API.
+**Pokedex:** The list of Pokémon with live search
+**Shopping Cart:** Simple ecommerce cart application built using React
+**Progressive Web Tetris:** Besides a beautiful, mobile-friendly implementation of Tetris, this project is a playground for integrating and experimenting with web technologies.
+**Product Comparison Page:** Simple Product Compare page built in React
+**Hacker News Clone React/GraphQL Hacker:** News clone rewritten with universal JavaScript, using React and GraphQL.
+**Bitcoin Price Index:** Simple bitcoin price index data from CoinDesk API.
+**Builder Book:**Open source web app to write and host documentation or sell books. Built with React, Material-UI, Next, Express, Mongoose, MongoDB.
+**GFonts Space:** A space which allows user to play with Google fonts. Built with React, Redux and React-Router.
