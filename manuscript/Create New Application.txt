@@ -37,3 +37,20 @@ Type the following in your command prompt to install and launch your app on the 
 $ react-native run-android
 
 Visit : https://facebook.github.io/react-native/docs/running-on-device
+
+**Lets install third party package**
+Step 1
+Install a library with native dependencies:
+
+$ npm install <library-with-native-dependencies> --save
+Note: --save or --save-dev flag is very important for this step. React Native will link your libs based on dependencies and devDependencies in your package.json file.
+
+**Example : npm install react-navigation --save**
+
+Step 2
+Link your native dependencies:
+
+$ react-native link
+Done! All libraries with native dependencies should be successfully linked to your iOS/Android project.
+
+**Now please check package.json you must find third party packages**
