@@ -1,5 +1,5 @@
 # React Native Fundamental 
+**React Native (RN) Java script library combine the best parts of Native development using React JS. React JS also Javascript library for building user interface as well as native development.**
 
-Hello, world!
 
 
