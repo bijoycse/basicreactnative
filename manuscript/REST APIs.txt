@@ -1,10 +1,121 @@
 # REST APIs
 
-To start a new paragraph, hit the return key twice. You want to create a blank line between paragraphs.
+**Networking**
+Many mobile apps need to load resources from a remote URL. You may want to make a POST request to a REST API, or you may simply need to fetch a chunk of static content from another server.
 
-To *italicize*, surround a word in asterisks.
+**Using Fetch**
+React Native provides the Fetch API for your networking needs. Fetch will seem familiar if you have used XMLHttpRequest or other networking APIs before. You may refer to MDN's guide on Using Fetch for additional information.
 
-To **bold**, use two asterisks.
+**Making requests**
+In order to fetch content from an arbitrary URL, just pass the URL to fetch:
+
+fetch('https://mywebsite.com/mydata.json');
+Fetch also takes an optional second argument that allows you to customize the HTTP request. You may want to specify additional headers, or make a POST request:
+
+fetch('https://mywebsite.com/endpoint/', {
+  method: 'POST',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    firstParam: 'yourValue',
+    secondParam: 'yourOtherValue',
+  }),
+});
+Take a look at the Fetch Request docs for a full list of properties.
+
+**Handling the response**
+The above examples show how you can make a request. In many cases, you will want to do something with the response.
+
+Networking is an inherently asynchronous operation. Fetch methods will return a Promise that makes it straightforward to write code that works in an asynchronous manner:
+
+function getMoviesFromApiAsync() {
+  return fetch('https://facebook.github.io/react-native/movies.json')
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson.movies;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+You can also use the proposed ES2017 async/await syntax in a React Native app:
+
+async function getMoviesFromApi() {
+  try {
+    let response = await fetch(
+      'https://facebook.github.io/react-native/movies.json',
+    );
+    let responseJson = await response.json();
+    return responseJson.movies;
+  } catch (error) {
+    console.error(error);
+  }
+}
+Don't forget to catch any errors that may be thrown by fetch, otherwise they will be dropped silently.
+
+**Fetch Example**
+
+import React from 'react';
+import { FlatList, ActivityIndicator, Text, View  } from 'react-native';
+
+export default class FetchExample extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state ={ isLoading: true}
+  }
+
+  componentDidMount(){
+    return fetch('https://facebook.github.io/react-native/movies.json')
+      .then((response) => response.json())
+      .then((responseJson) => {
+
+        this.setState({
+          isLoading: false,
+          dataSource: responseJson.movies,
+        }, function(){
+
+        });
+
+      })
+      .catch((error) =>{
+        console.error(error);
+      });
+  }
+
+
+
+  render(){
+
+    if(this.state.isLoading){
+      return(
+        <View style={{flex: 1, padding: 20}}>
+          <ActivityIndicator/>
+        </View>
+      )
+    }
+
+    return(
+      <View style={{flex: 1, paddingTop:20}}>
+        <FlatList
+          data={this.state.dataSource}
+          renderItem={({item}) => <Text>{item.title}, {item.releaseYear}</Text>}
+          keyExtractor={({id}, index) => id}
+        />
+      </View>
+    );
+  }
+}
+
+**API Response**
+Star Wars, 1977
+Back to the Future, 1985
+The Matrix, 1999
+Inception, 2010
+Interstellar, 2014
 
 Here is an image with a caption:
 
